@@ -18,7 +18,9 @@ public class Car {
     private String mileage;
     private String prodYear;
     private String imageUrl;
+
     public Car(@NotNull String brand, String model, String price, String mileage, String prodYear, String imageUrl) {
+        this();
         this.brand = brand;
         this.model = model;
         this.price = price;

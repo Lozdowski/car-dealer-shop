@@ -6,7 +6,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-
+@RestController
 public class CarRestController {
 
     private CarsService carsService;
@@ -21,7 +21,7 @@ public class CarRestController {
     }
     @GetMapping("api/cars/{id}")
     public Car getCar(@PathVariable long id){
-        return carsService.getCarById(id);
+        return carsService.getCar(id);
     }
     @PutMapping("/api/cars/{id}")
     public Car updateCar(@PathVariable long id, @RequestBody Car car){
