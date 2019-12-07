@@ -17,7 +17,7 @@ public class SwaggerConfig {
     public Docket carsApi(){
         return new Docket(DocumentationType.SWAGGER_2)
                 .select()
-                .apis(RequestHandlerSelectors.basePackage("cardealershop.controlller"))
+                .apis(RequestHandlerSelectors.basePackage("cardealershop.controller"))
                 .paths(regex("/api/.*"))
                 .build();
     }
