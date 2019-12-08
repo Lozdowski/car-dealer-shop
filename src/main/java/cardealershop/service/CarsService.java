@@ -11,10 +11,14 @@ import java.util.List;
 
 @Service
 public class CarsService {
+
     private CarsRepository carsRepository;
 
     public CarsService(CarsRepository carsRepository) {
         this.carsRepository = carsRepository;
+    }
+
+    public CarsService() {
     }
 
     public Car createCar(Car car) {
