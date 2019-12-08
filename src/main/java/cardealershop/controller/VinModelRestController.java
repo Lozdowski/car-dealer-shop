@@ -2,7 +2,6 @@ package cardealershop.controller;
 
 import cardealershop.model.VinModel;
 import cardealershop.service.VinModelService;
-import org.springframework.http.ResponseEntity;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -17,8 +16,8 @@ public class VinModelRestController {
         this.vinModelService = vinModelService;
     }
     // no mapping since ApiKey is not valid (I did not provide my credit card crudentials :)
-    @GetMapping("/vin")
-    public VinModel getVinData(@RequestParam String vin, ModelMap model){
+    @GetMapping("/api/vin")
+    public VinModel getVinData(@RequestParam String vin){
         return vinModelService.getVinData(vin);
     }
 }

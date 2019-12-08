@@ -21,13 +21,13 @@
             <td th:text="${car.model}"></td>
             <td th:text="${car.prodYear}"></td>
             <td>
-                <form action="/cars/delete" >
+                <form action="/admin/cars/delete" >
                     <input type="hidden" name="id" th:value="${car.getId()}">
                     <button class="btn btn-sm btn-danger" title="submit">delete </button>
                 </form>
             </td>
             <td>
-                <form action="/cars/update">
+                <form action="/admin/cars/update">
                     <input type="hidden" name="id" th:value="${car.getId()}">
                     <button class="btn btn-sm btn-primary" title="submit">update </button>
                 </form>

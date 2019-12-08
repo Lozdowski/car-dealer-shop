@@ -15,7 +15,7 @@ public class ViewController {
         this.carsService = carsService;
     }
 
-    @GetMapping("/cars")
+    @GetMapping("/admin/cars")
     public String getHomePage(Model model, @RequestParam(value = "message" ,required = false) String resultMessage){
         String welcome = "Add car to a list of cars: ";
         model.addAttribute("welcome", welcome);
@@ -23,7 +23,7 @@ public class ViewController {
         model.addAttribute("cars",carsService.getCars());
         return "home";
     }
-    @PostMapping("/cars/add")
+    @PostMapping("/admin/cars/add")
     public String addCar(@ModelAttribute Car inCar, Model model){
         Car car = new Car();
         car.setBrand(inCar.getBrand());
@@ -33,13 +33,13 @@ public class ViewController {
         carsService.createCar(car);
         return "redirect:/cars";
     }
-    @GetMapping("/cars/delete")
+    @GetMapping("admin/cars/delete")
     public String deleteCar(@RequestParam long id){
         carsService.deleteCarById(id);
         return "redirect:/cars";
 
     }
-    @GetMapping("/cars/update")
+    @GetMapping("/admin/cars/update")
     public String updateCar(@RequestParam  long id, Model model){
         Car car = carsService.getCar(id);
         if(car==null) return "cannot find car to update !";
@@ -48,7 +48,7 @@ public class ViewController {
         return "update";
         //    return carService.updateCar(car);
     }
-    @PostMapping("cars/update/confirm")
+    @PostMapping("/admin/cars/update/confirm")
     public String updateCarConfirm(@ModelAttribute Car inCar) {
         Car car = new Car();
         car.setId(inCar.getId());
