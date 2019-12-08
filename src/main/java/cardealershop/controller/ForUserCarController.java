@@ -16,6 +16,7 @@ public class ForUserCarController {
     public ForUserCarController(CarsService carsService) {
         this.carsService = carsService;
     }
+
     @GetMapping("/cars")
     public String listOfAllCars(Model model){
         model.addAttribute("listcars",carsService.getCars());

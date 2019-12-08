@@ -1,5 +1,6 @@
 package cardealershop;
 
+import cardealershop.repository.CarsRepository;
 import cardealershop.repository.VinModelRepository;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -11,7 +12,6 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 @SpringBootApplication
-@EnableJpaRepositories("cardealershop.repository")
 public class CarDealerShopApplication {
 
     public static void main(String[] args) {
@@ -22,6 +22,7 @@ public class CarDealerShopApplication {
     public PasswordEncoder getPasswordEncoder(){
         return new BCryptPasswordEncoder();
     }
+
 
 
 }

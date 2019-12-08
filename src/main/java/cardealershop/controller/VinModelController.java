@@ -2,6 +2,7 @@ package cardealershop.controller;
 
 import cardealershop.model.VinModel;
 import cardealershop.service.VinModelService;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;

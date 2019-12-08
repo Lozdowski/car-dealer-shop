@@ -1,5 +1,6 @@
 package cardealershop.databaseauth;
 
+import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -9,11 +10,9 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.crypto.password.PasswordEncoder;
-
-@Configuration
-@EnableWebSecurity
+@ConfigurationProperties("databaseauth")
 @EnableGlobalMethodSecurity(prePostEnabled = true)
-@EnableJpaRepositories (basePackageClasses = {UserRepository.class})
+@EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter{
 
     private PasswordEncoder passwordEncoder;
@@ -29,7 +28,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()            // wlaczamy filtr autoryzacji
-                .antMatchers("/login**", "/register**","/").permitAll() // rejestrujemy wyjatek czyli wykluczamy z autoryzacji
+                .antMatchers("/login**", "/register**","/","/cars**").permitAll() // rejestrujemy wyjatek czyli wykluczamy z autoryzacji
                 .and()
                 .formLogin()            // wlaczamy obsluge logowania formularzu
                 .loginPage("/login") // url do strony logowania
