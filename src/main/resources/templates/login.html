@@ -1,12 +1,11 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Please Login</title>
 </head>
 <body>
 <div>
-    <form name="f" th:action="@{/sign}"  method="post">
+    <form name="f" action="/sign" method="post">
         <fieldset>
             <legend>Please Login</legend>
             <div th:if="${param.error}" class="alert alert-error">
