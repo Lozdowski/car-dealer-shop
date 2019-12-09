@@ -24,7 +24,7 @@ public class ForUserCarController {
         return "cars";
     }
     @GetMapping("/cars/{id}")
-    public String carAllData(@PathVariable long id, ModelMap modelMap){
+    public String carAllData(@PathVariable("id") long id, ModelMap modelMap){
         Car car = carsService.getCarById(id);
         modelMap.put("car",car);
         return "carById";

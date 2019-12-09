@@ -16,13 +16,34 @@
         <div th:each="car : ${listcars}" >
             <tr>
             <a th:href="@{|/cars/${car.id}|}">
-                <img th:src="@{|/cars/${car.imageUrl}.png|}" style="width:350px;height:300px;"/>
+                <img th:src="@{|/cars/${car.imageUrl}.png|}" style="width:300px;height:300px;" />
             </a>
             </tr>
-            <tr>
-
-
-            </tr>
+                <a>
+                    <table id="vertical-1">
+                        <caption>Car Data</caption>
+                        <tr>
+                            <th>Brand</th>
+                            <td th:text="${car.brand}"></td>
+                        </tr>
+                        <tr>
+                            <th>Model</th>
+                            <td th:text="${car.model}"></td>
+                        </tr>
+                        <tr>
+                            <th>Price</th>
+                            <td th:text="${car.price}"></td>
+                        </tr>
+                        <tr>
+                            <th>Mileage</th>
+                            <td th:text="${car.mileage}"></td>
+                        </tr>
+                        <tr>
+                            <th>Production year</th>
+                            <td th:text="${car.prodYear}"></td>
+                        </tr>
+                    </table>
+                </a>
         </div>
     </div>
 </table>

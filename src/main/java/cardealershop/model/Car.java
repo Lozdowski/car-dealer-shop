@@ -87,4 +87,17 @@ public class Car {
     public void setImageUrl(String imageUrl) {
         this.imageUrl = imageUrl;
     }
+
+    @Override
+    public String toString() {
+        return "Car{" +
+                "id=" + id +
+                ", brand='" + brand + '\'' +
+                ", model='" + model + '\'' +
+                ", price='" + price + '\'' +
+                ", mileage='" + mileage + '\'' +
+                ", prodYear='" + prodYear + '\'' +
+                ", imageUrl='" + imageUrl + '\'' +
+                '}';
+    }
 }

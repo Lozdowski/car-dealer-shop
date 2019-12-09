@@ -20,31 +20,38 @@ import java.util.stream.Collectors;
 @Controller
 public class FileUploadController {
 
-    private final FileSystemStorageService fileSystemStorageService;
+    private final StorageService storageService;
 
-    public FileUploadController(FileSystemStorageService fileSystemStorageService){
-        this.fileSystemStorageService = fileSystemStorageService;
+    @Autowired
+    public FileUploadController(StorageService storageService) {
+        this.storageService = storageService;
     }
-
 
     @GetMapping("/file")
     public String listUploadedFiles(Model model) throws IOException {
-        if(!fileSystemStorageService.equals(null)) {
-        model.addAttribute("files", fileSystemStorageService.loadAll().map(
+
+        model.addAttribute("files", storageService.loadAll().map(
                 path -> MvcUriComponentsBuilder.fromMethodName(FileUploadController.class,
                         "serveFile", path.getFileName().toString()).build().toString())
-                .collect(Collectors.toList()));}
+                .collect(Collectors.toList()));
 
         return "uploadForm";
     }
 
+    @GetMapping("/files/{filename:.+}")
+    @ResponseBody
+    public ResponseEntity<Resource> serveFile(@PathVariable String filename) {
 
+        Resource file = storageService.loadAsResource(filename);
+        return ResponseEntity.ok().header(HttpHeaders.CONTENT_DISPOSITION,
+                "attachment; filename=\"" + file.getFilename() + "\"").body(file);
+    }
 
     @PostMapping("/file")
     public String handleFileUpload(@RequestParam("file") MultipartFile file,
                                    RedirectAttributes redirectAttributes) {
 
-        fileSystemStorageService.store(file);
+        storageService.store(file);
         redirectAttributes.addFlashAttribute("message",
                 "You successfully uploaded " + file.getOriginalFilename() + "!");
 

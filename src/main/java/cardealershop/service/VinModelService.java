@@ -15,7 +15,7 @@ public class VinModelService {
 
     @Autowired
     VinModelRepository vinModelRepository;
-    
+
     // no mapping since ApiKey is not valid (I did not provide my credit card crudentials :)
     public VinModel getVinData(String vin){
         HttpHeaders headers = new HttpHeaders();

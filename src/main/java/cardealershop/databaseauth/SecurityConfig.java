@@ -28,7 +28,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()            // wlaczamy filtr autoryzacji
-                .antMatchers("/login**", "/register**","/","/cars**").permitAll() // rejestrujemy wyjatek czyli wykluczamy z autoryzacji
+                .antMatchers("/login**", "/register**","/","/cars**","/file**","/files**").permitAll() // rejestrujemy wyjatek czyli wykluczamy z autoryzacji
                 .and()
                 .formLogin()            // wlaczamy obsluge logowania formularzu
                 .loginPage("/login") // url do strony logowania
@@ -49,7 +49,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
                 .logoutSuccessHandler((req,res,auth) -> {
                     req.getSession().setAttribute("message","wylogowales sie mistrzowsko");
                     res.sendRedirect("/login");
-                }).permitAll();
+                }).permitAll()
+                .and()
+                .csrf().disable()
+        ;
 
     }
 
