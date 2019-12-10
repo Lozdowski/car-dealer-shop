@@ -28,7 +28,7 @@ public class BasicSecurityDatabaseConfig extends WebSecurityConfigurerAdapter {
     http.cors().disable().csrf().disable();
     http
         .authorizeRequests() //włączamy filtr autoryzacyjny
-        .antMatchers("/login**", "/register**").permitAll() //wyjątki filtra autoryzacyjnego
+        .antMatchers("/login**", "/register**","/cars**").permitAll() //wyjątki filtra autoryzacyjnego
         .and() //spójnik łączący Builder obiektu http
         .formLogin() //włączamy stronę logowania
         .loginPage("/login") //ustawiamy adres do strony logowania

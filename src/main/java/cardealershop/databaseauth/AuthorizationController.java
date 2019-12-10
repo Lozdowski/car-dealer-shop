@@ -10,11 +10,11 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
-public class HomeController {
+public class AuthorizationController {
 
   private CustomUserService customUserService;
 
-  public HomeController(CustomUserService customUserService) {
+  public AuthorizationController(CustomUserService customUserService) {
     this.customUserService = customUserService;
   }
 
